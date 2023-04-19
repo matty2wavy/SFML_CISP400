@@ -29,6 +29,7 @@ int main()
 	spriteBackground.setTexture(textureBackground);
 	//Set the sprite to cover the entire screen
 	spriteBackground.setPosition(0, 0);
+	window.draw(spriteBackground);
 
 	//Prompt the user to enter the three vertices.
 	Text messageText1;
@@ -56,13 +57,6 @@ int main()
 	vector<CircleShape> vertices;
 	vector<CircleShape> points;
 	Vector2f point;
-
-	//Close the window
-	if (Keyboard::isKeyPressed(Keyboard::Escape))
-	{
-		window.close();
-	}
-
 
 	//Get the three left clicks and set as vertices of the triangle
 	while (vertices.size() < 3)
@@ -94,6 +88,12 @@ int main()
 	bool algorithmStarted = false;
 	while (window.isOpen())
 	{
+		//Close the window
+		if (Keyboard::isKeyPressed(Keyboard::Escape))
+		{
+			window.close();
+		}
+
 		Event event;
 		while (window.pollEvent(event))
 		{
