@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <cmath>
 using namespace sf;
 
 class Player
@@ -12,7 +13,7 @@ class Player
 		// Of course, we will need a sprite
 		Sprite m_Sprite;
 		// And a texture
-		// !!Watch this space – Interesting changes here soon!!
+		// !!Watch this space ï¿½ Interesting changes here soon!!
 		Texture m_Texture;
 		// What is the screen resolution
 		Vector2f m_Resolution;
