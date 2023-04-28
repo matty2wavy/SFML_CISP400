@@ -12,7 +12,7 @@ int main()
     unsigned int height = VideoMode::getDesktopMode().height;
     float aspectRatio = (float)height / (float)width;
 
-    RenderWindow window(VideoMode(width, height), "Mandelbrot Set", Style::Fullscreen);
+    RenderWindow window(VideoMode(width, height), "Mandelbrot Set", Style::Default);
 
     ComplexPlane cp(aspectRatio);
     Font font;
