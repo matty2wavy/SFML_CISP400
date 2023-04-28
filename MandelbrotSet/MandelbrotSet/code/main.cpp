@@ -1,3 +1,5 @@
+//Matthew Nguyen and Eric Stevens
+
 #include <SFML/Graphics.hpp>
 #include "ComplexPlane.h"
 #include <iostream>
