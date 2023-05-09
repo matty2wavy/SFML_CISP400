@@ -77,7 +77,7 @@ void Particle::unitTests()
     cout << "Applying one rotation of 90 degrees about the origin..." << endl;
     Matrix initialCoords = m_A;
     rotate(PI / 2.0);
-    bool rotationPassed = true;
+    bool rotationPassed = true; //look at this
     for (int j = 0; j < initialCoords.getCols(); j++)
     {
         if (!almostEqual(m_A(0, j), -initialCoords(1, j)) || !almostEqual(m_A(1, j), initialCoords(0, j)))
@@ -154,15 +154,17 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     m_cartesianPlane.setCenter(0, 0);
     m_cartesianPlane.setSize(target.getSize().x, (-1.0) * target.getSize().y);
     m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, m_cartesianPlane);
-    m_vx = (rand() % 400) + 100; //Could change later
-    m_vy = (rand() % 400) + 100;
+    m_centerCoordinate.x = 0;
+    m_centerCoordinate.y = 0;
+    m_vx = (rand() % 401) + 100;
+    m_vy = (rand() % 401) + 100;
     m_color1 = Color::White;
     m_color2 = Color(rand() % 256, rand() % 256, rand() % 256);
     float theta = ((float)rand() / (RAND_MAX)) * (PI / 2);
     float dTheta = 2 * PI / (numPoints - 1);
-    for (int j = 1; j < numPoints; j++)
+    for (int j = 0; j < numPoints; j++)
     {
-        float r = (rand() % 20) + 60;
+        float r = (rand() % 61) + 20;
         float dx = r * cos(theta);
         float dy = r * sin(theta);
         theta += dTheta;
@@ -174,7 +176,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
 void Particle::draw(RenderTarget& target, RenderStates states) const
 {
     VertexArray lines(TriangleFan, m_numPoints + 1);
-    Vector2f center = (Vector2f)target.mapCoordsToPixel(m_centerCoordinate);
+    Vector2f center = Vector2f(target.mapCoordsToPixel(m_centerCoordinate, m_cartesianPlane));
     lines[0].position = center;
     lines[0].color = m_color1;
     for (int j = 1; j <= m_numPoints; j++)
@@ -214,7 +216,7 @@ void Particle::rotate(double theta)
     Vector2f temp = m_centerCoordinate;
     translate(-m_centerCoordinate.x, -m_centerCoordinate.y);
     RotationMatrix R(theta);
-    m_A = R * m_A;
+    m_A = R * m_A; 
     translate(temp.x, temp.y);
 }
 

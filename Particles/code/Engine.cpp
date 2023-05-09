@@ -16,7 +16,7 @@ void Engine::run()
 	cout << "Starting Particle unit tests..." << endl;
 	Particle p(m_Window, 4, { (int)m_Window.getSize().x / 2, (int)m_Window.getSize().y / 2 });
 	p.unitTests();
-	cout << "Unit tests complete.  Starting engine..." << endl;
+	cout << "Unit tests complete.  Starting engine..." << endl; // look at this
 
 	while (m_Window.isOpen())
 	{
@@ -63,8 +63,7 @@ void Engine::input()
 
 void Engine::update(float dtAsSeconds)
 {
-	vector<Particle>::iterator it;
-	for (it = m_particles.begin(); it != m_particles.end(); it)
+	for (auto it = m_particles.begin(); it != m_particles.end();)
 	{
 		if (it->getTTL() > 0.0)
 		{
@@ -81,7 +80,7 @@ void Engine::update(float dtAsSeconds)
 void Engine::draw()
 {
 	m_Window.clear();
-	for (int i = 0; i < m_particles.size(); i++)
+	for (long unsigned int i = 0; i < m_particles.size(); i++)
 	{
 		m_Window.draw(m_particles[i]);
 	}
