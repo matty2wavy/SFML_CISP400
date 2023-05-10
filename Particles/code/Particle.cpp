@@ -73,7 +73,7 @@ void Particle::unitTests()
         cout << "Passed.  +1" << endl;
         score++;
     }
-
+    
     cout << "Applying one rotation of 90 degrees about the origin..." << endl;
     Matrix initialCoords = m_A;
     rotate(PI / 2.0);
@@ -156,7 +156,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, m_cartesianPlane);
     //m_centerCoordinate.x = 0;
     //m_centerCoordinate.y = 0;
-    m_vx = (rand() % 401) + 100;
+    m_vx = ((rand() % 401) + 150);
     m_vy = (rand() % 401) + 100;
     m_color1 = Color::White;
     m_color2 = Color(rand() % 256, rand() % 256, rand() % 256);

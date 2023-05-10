@@ -50,12 +50,13 @@ namespace Matrices
 		{
 			for (int k = 0; k < b.getCols(); k++)
 			{
-				for (int j = 0; j < b.getRows(); j++)
+				for (int j = 0; j < a.getCols(); j++)
 				{
 					c(i, k) += a(i, j) * b(j, k);
 				}
 			}
 		}
+		return c;
 	}
 
 	bool operator==(const Matrix& a, const Matrix& b)

@@ -6,8 +6,8 @@ using namespace std;
 
 Engine::Engine()
 {
-	RenderWindow m_Window;
-	m_Window.create(VideoMode::getDesktopMode(), "Particle Engine", Style::Default);
+	VideoMode vm(1920, 1080);
+	m_Window.create(vm, "Particle Engine", Style::Default);
 }
 
 void Engine::run()
